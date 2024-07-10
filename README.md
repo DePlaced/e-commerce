@@ -1,2 +1,2 @@
 # e-commerce
-My newest project developing a e-commerce platform with the newest technologies
+My newest project developing a e-commerce platform using the best technologies for the purpose
