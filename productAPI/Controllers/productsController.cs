@@ -6,7 +6,7 @@ namespace productAPI.Controllers;
 
 [ApiController]
 [Route("products")]
-public class productsController : ControllerBase
+public class productsController : AppController
 {
 
     private readonly ILogger<productsController> _logger;
@@ -19,8 +19,11 @@ public class productsController : ControllerBase
     }
 
     [HttpGet]
-    public async ActionResult<IEnumerable<ProductDTO>> Get()
+    public async Task<IActionResult> GetAll()
     {
-        return null;
+        return await GetResultWithErrorHandling(Request, async () =>
+        {
+            return Ok(await _productLogic.GetAll());
+        });
     }
 }

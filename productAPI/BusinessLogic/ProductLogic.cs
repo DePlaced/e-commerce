@@ -1,5 +1,6 @@
 ﻿using productAPI.DataAccess;
 using productAPI.DTO;
+using productAPI.DTOConversion;
 
 namespace productAPI.BusinessLogic
 {
@@ -11,9 +12,11 @@ namespace productAPI.BusinessLogic
         {
             _productAccess = productAccess;
         }
+
+        /// <inheritdoc />
         public async Task<IEnumerable<ProductDTO>> GetAll()
         {
-            return await _productAccess.GetAll().Select(p => p.ToDTO());
+            return (await _productAccess.GetAll()).Select(p => p.ToDTO());
         }
     }
 }
